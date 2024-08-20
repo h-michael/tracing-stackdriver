@@ -8,7 +8,7 @@ use tracing_core::Level;
     all(tracing_unstable, feature = "valuable"),
     derive(valuable::Valuable)
 )]
-#[derive(Debug, Default, Serialize)]
+#[derive(Debug, Default, Serialize, PartialEq)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum LogSeverity {
     /// Log entry has no assigned severity level

@@ -87,3 +87,4 @@ version = "0.3.0"
 [features]
 valuable = ["dep:valuable", "valuable-serde", "http", "url"]
 opentelemetry = ["dep:opentelemetry", "tracing-opentelemetry"]
+error_reporting = []

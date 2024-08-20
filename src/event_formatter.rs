@@ -81,6 +81,14 @@ impl EventFormatter {
             }
         }
 
+        #[cfg(feature = "error_reporting")]
+        if severity == LogSeverity::Error {
+            use std::backtrace::Backtrace;
+
+            map.serialize_entry("@type", "type.googleapis.com/google.devtools.clouderrorreporting.v1beta1.ReportedErrorEvent")?;
+            map.serialize_entry("stack_trace", &Backtrace::capture().to_string())?;
+        }
+
         // serialize the current span and its leaves
         if let Some(span) = span {
             map.serialize_entry("span", &SerializableSpan::new(&span))?;
